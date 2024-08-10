@@ -31,11 +31,11 @@
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" role="search" method="get" action="{% url 'search_results' %}">
+          <input class="form-control me-2" type="search" name="query" value="{{ query }}" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
-        <div class="ms-5 d-flex gap-3">
+        <div class="ms-0 ms-lg-5 d-flex gap-3 my-3 my-lg-0">
           {% if user.is_authenticated %}
             <form method="post" action="{% url 'logout' %}">
               {% csrf_token %}
