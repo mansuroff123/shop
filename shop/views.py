@@ -55,3 +55,7 @@ class SignInView(LoginView):
 def logout_view(request):
     logout(request)
     return redirect('product_list')
+
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', {}, status=404)
