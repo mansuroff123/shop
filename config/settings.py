@@ -23,7 +23,8 @@ DEBUG = env('DEBUG')
 
 HANDLE404 = 'shop.views.custom_404_view'
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+# ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -73,10 +74,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+# Mysql Database
+
+DATABASES ={
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -120,7 +135,9 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / "static"
 
-STATICFILES_DIRS = BASE_DIR / 'assets',
+STATICFILES_DIRS = [
+    BASE_DIR / 'assets',
+]
 
 MEDIA_URL = 'media/'
 
